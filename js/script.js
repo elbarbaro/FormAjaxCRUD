@@ -5,6 +5,7 @@ formDatos.onsubmit = realizarPeticionCrear; // 1
 var url = "http://localhost:8080/wishlists";
 
 
+// Realiza una peticion para obtener datos
 function cargarElementos(){
 	var request = new XMLHttpRequest();
 	request.onreadystatechange = procesarRespuesta;
@@ -13,6 +14,7 @@ function cargarElementos(){
 	request.send();
 }
 
+// Realizar una peticion para mandar datos
 function realizarPeticionCrear(e){
 	e.preventDefault();
 	var datosFormulario = crearDatosEnviar();
@@ -23,6 +25,7 @@ function realizarPeticionCrear(e){
 	request.send(datosFormulario);
 }
 
+// Procesa la respuesta que recibe de mandar datos
 function procesarRespuestaCrear(){
 	if(this.readyState == 4 && this.status == 200){
 		var notificacionElement = document.createElement("h4");
@@ -31,6 +34,7 @@ function procesarRespuestaCrear(){
 	}
 }
 
+// Moldeo datos para enviar
 function crearDatosEnviar(){
 	var txtNombre = document.getElementById("txtNombre");
 	var valor = txtNombre.value;
@@ -40,6 +44,7 @@ function crearDatosEnviar(){
 	return JSON.stringify(object); //3
 }
 
+// Procesa la respuesta de los datos obtenidos
 function procesarRespuesta(){
 	if(this.readyState == 4 && this.status == 200){
 		var respuesta = this.responseText;
@@ -50,6 +55,7 @@ function procesarRespuesta(){
 	}
 }
 
+// Actualizar mi documento HTML a través de DOM
 function crearLista(lista){
 	//CRUD
 	var listaElement = document.getElementById("elementos");
